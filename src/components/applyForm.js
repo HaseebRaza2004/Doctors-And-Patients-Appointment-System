@@ -15,9 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import React, { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import Dropzone from "react-dropzone";
 import {
     Select,
     SelectContent,
@@ -25,7 +22,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "./ui/select";
-import UploadImg from "./uploadImage";
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
@@ -64,10 +60,6 @@ export default function ApplyAsDoctorForm() {
             address: "",
         },
     });
-    const onDrop = useCallback((acceptedFiles) => {
-        // Do something with the files
-    }, []);
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
     function onSubmit(values) {
         console.log(values);
@@ -278,8 +270,6 @@ export default function ApplyAsDoctorForm() {
                         </FormItem>
                     )}
                 />
-
-                <UploadImg />
 
                 <Button type="submit">Submit</Button>
             </form>
