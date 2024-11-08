@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { auth } from "../../auth";
 
 
-export default function HeroSection() {
+export default async function HeroSection() {
+
+    const session = await auth(); 
 
     return (
         <section className="text-gray-600 body-font">
@@ -24,7 +27,7 @@ export default function HeroSection() {
                         <Link href={"/doctors"}>
                             <Button variant="outline">Find Doctor You Need</Button>
                         </Link>
-                        <Link href={"/doctors/apply"}>
+                        <Link href={session ? "/doctors/apply" : "/signin     "}>
                             <Button>Apply As doctor</Button>
                         </Link>
                     </div>

@@ -20,10 +20,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
         async signIn({ account, profile }) {
             if (account.provider === "google") {
-                console.log("account", account);
-                console.log("profile", profile);
+                // console.log("account", account);
+                // console.log("profile", profile);
                 let obj = {
-                    firstName : profile.given_name,
+                    firstName: profile.given_name,
                     lastName: profile.family_name,
                     email: profile.email,
                     picture: profile.picture,
@@ -31,6 +31,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 const user = await handleLogin(obj);
             }
             return true // Do different verification for other providers that don't have `email_verified`
+        },
+        async jwt({ token }) {
+            let user = await handleLogin({ email: token.email });
+            token.role = user.role;
+            token._id = user._id;
+            return token;
+        },
+        session({ session, token }) {
+            session.user._id = token._id;
+            session.user.role = token.role;
+            return session;
         },
     },
 });
