@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/menubar";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { auth } from "../../auth";
+import { auth, signOut } from "../../auth";
 import Image from "next/image";
 
 
@@ -45,7 +45,14 @@ export default async function Header() {
                                         <MenubarItem>My Appointments</MenubarItem>
                                     </Link>
                                     <MenubarSeparator />
-                                    <MenubarItem>Logout</MenubarItem>
+                                    <form
+                                        action={async () => {
+                                            "use server"
+                                            await signOut("google")
+                                        }}
+                                    >
+                                        <Button variant={"outline"} className={"border-none w-full flex justify-start"}>Logout</Button>
+                                    </form>
                                 </MenubarContent>
                             </MenubarMenu>
                         </Menubar>
