@@ -52,14 +52,24 @@ export default function ApplyAsDoctorForm({ session }) {
     });
 
     async function onSubmit(values) {
-        console.log(values);
+        // console.log(values);
         values.user = session.user._id;
-        await addRequest(values);
-        form.reset();
-        toast({
-            title: "Your application is submitted",
-            description: "You will be informed by email in 3 bussiness days",
-        });
+        const response = await addRequest(values);
+        // console.log("response ", response);
+        
+        if (response.error) {
+            form.reset();
+            toast({
+                title: "Sorry, Your application cannot be submited",
+                description: response.msg,
+            });
+        } else {
+            form.reset();
+            toast({
+                title: "Your application is submitted",
+                description: "You will be informed by email in 3 bussiness days",
+            });
+        };
     };
 
     return (

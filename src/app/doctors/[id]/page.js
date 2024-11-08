@@ -16,6 +16,7 @@ export default function DoctorDetail({ params }) {
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
                     <div className="lg:w-1/2 relative w-full lg:h-auto h-64 object-cover object-center rounded">
                         <Image
+                        alt="Doctor Detail"
                             fill={true}
                             src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fHww"
                         />
