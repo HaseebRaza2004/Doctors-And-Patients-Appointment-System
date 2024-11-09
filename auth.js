@@ -29,8 +29,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     picture: profile.picture,
                 };
                 const user = await handleLogin(obj);
+                return true // Do different verification for other providers that don't have `email_verified`
             }
-            return true // Do different verification for other providers that don't have `email_verified`
         },
         async jwt({ token }) {
             let user = await handleLogin({ email: token.email });
