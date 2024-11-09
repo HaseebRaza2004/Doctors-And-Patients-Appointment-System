@@ -25,6 +25,6 @@ export async function updateRequest(id, status) {
         body: JSON.stringify({ id, status }),
     });
     requests = requests.json();
-    revalidatePath("/admin/requests");
+    revalidatePath("/admin/request");
     return requests;
 };

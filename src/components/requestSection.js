@@ -27,9 +27,8 @@ import {
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
-import { updateRequest } from "@/actions/requests";
-import Image from "next/image";
 import DoctorDetailSheet from "./doctorDetailSheet";
+import { updateRequest } from "@/actions/requests";
 
 export default function DoctorRequests({ requests }) {
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -46,10 +45,10 @@ export default function DoctorRequests({ requests }) {
 
     const confirmAction = async () => {
         if (selectedAction.type === "accept") {
-            console.log("selectedAction=>", selectedAction);
+            // console.log("selectedAction=>", selectedAction);
             await updateRequest(selectedAction.requestId, "accepted");
         } else if (selectedAction.type === "reject") {
-            console.log("selectedAction=>", selectedAction);
+            // console.log("selectedAction=>", selectedAction);
             await updateRequest(selectedAction.requestId, "rejected");
         }
         setDialogOpen(false);
@@ -64,14 +63,13 @@ export default function DoctorRequests({ requests }) {
             <CardHeader className="flex flex-row items-center space-x-4">
                 <Avatar className="h-10 w-10">
                     <AvatarImage
-                        fill={true}
                         src={request.user.picture}
                         alt={request.user.firstName}
                     />
-                    {/* <AvatarFallback>
+                    <AvatarFallback>
                         {request.user.firstName.charAt(0)}
                         {request.user.lastName?.charAt(0)}
-                    </AvatarFallback> */}
+                    </AvatarFallback>
                 </Avatar>
                 <div>
                     <CardTitle>{`${request.user.firstName} ${request.user.lastName || ""
@@ -204,4 +202,4 @@ export default function DoctorRequests({ requests }) {
             </Dialog>
         </>
     );
-}
+};
