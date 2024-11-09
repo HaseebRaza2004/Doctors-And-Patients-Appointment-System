@@ -30,6 +30,7 @@ export default async function Header() {
                                 <MenubarTrigger>
                                     <Image
                                         src={session?.user?.image}
+                                        alt="Loading..."
                                         height={30}
                                         width={30}
                                         className="rounded-full"
