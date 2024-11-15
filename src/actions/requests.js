@@ -12,10 +12,9 @@ export async function addRequest(data) {
     return add;
 };
 
-export async function getRequest() {
-    let requests = await fetch(`${process.env.BASE_URL}api/request`);
+export async function getRequest(status) {    
+    let requests = await fetch(`${process.env.BASE_URL}api/request?status=${status ? status : ""}`);
     requests = requests.json();
-
     return requests;
 };
 

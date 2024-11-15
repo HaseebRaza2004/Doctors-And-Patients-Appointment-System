@@ -6,13 +6,13 @@ import { DatePicker } from "@/components/datePicker";
 
 
 export default function DoctorDetail({ params }) {
-    // console.log(params);
+    console.log(params);
     const doctorInfo = doctors.find((data) => data.id == params.id);
     // console.log("doctor Info",doctorInfo);
 
     return (
         <div className="min-h-screen">
-            <div className="container  py-10 mx-auto">
+            {/* <div className="container  py-10 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
                     <div className="lg:w-1/2 relative w-full lg:h-auto h-64 object-cover object-center rounded">
                         <Image
@@ -169,7 +169,7 @@ export default function DoctorDetail({ params }) {
                         <Button className={"w-full"}>Book Your Appointment</Button>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 };

@@ -4,18 +4,14 @@ import { doctors } from "@/lib/data";
 
 import {
     Card,
-    CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import { getRequest } from "@/actions/requests";
 
-
-export default function DoctorsSection() {
-
-    const filtred = doctors.splice(0, 6)
-
+export default async function DoctorsSection() {
+    const { requests } = await getRequest("accepted");
     return (
         <div>
             <div className="flex justify-between items-center">
@@ -24,19 +20,19 @@ export default function DoctorsSection() {
                 </h1>
                 <Link href={"/doctors"}>
                     <Button>
-                        See All
+                        See All Doctors
                     </Button>
                 </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 my-7">
                 {
-                    filtred.map((data) => {
+                    requests.map((doctor) => {
                         return (
-                            <Link key={data.id} href={`/doctors/${data.id}`}>
+                            <Link key={doctor._id} href={`/doctors/${doctor._id}`}>
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>{data.name}</CardTitle>
-                                        <CardDescription>{data.category}</CardDescription>
+                                        <CardTitle>{`Dr.${doctor.user.firstName + doctor.user.lastName}`}</CardTitle>
+                                        <CardDescription>{`${doctor.specialization} Speacialist`}</CardDescription>
                                     </CardHeader>
                                 </Card>
                             </Link>

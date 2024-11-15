@@ -11,10 +11,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HomeIcon, ClockIcon, PlusCircledIcon, MagicWandIcon } from "@radix-ui/react-icons";
 import { doctors } from "@/lib/data";
 import Link from "next/link";
+import { getRequest } from "@/actions/requests";
 
 
-export default function Doctors() {
-
+export default async function Doctors() {
+    const {requests} = await getRequest();
+    // console.log(requests);
+    
     return (
         <div className="container mx-auto">
             <div className="">
@@ -25,19 +28,19 @@ export default function Doctors() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:gri xl:grid-cols-3 gap-4 my-10">
                     {
-                        doctors.map((data) => {
+                        requests.map((doctor) => {
                             return (
-                                <Card key={data.id}>
+                                <Card key={doctor._id}>
                                     <CardHeader className={"flex flex-row gap-3"}>
                                         <div>
                                             <Avatar>
-                                                <AvatarImage src="https://github.com/shadcn.png" />
-                                                <AvatarFallback>User</AvatarFallback>
+                                                <AvatarImage src={doctor?.user?.picture} />
+                                                <AvatarFallback>{doctor?.user?.firstName}</AvatarFallback>
                                             </Avatar>
                                         </div>
                                         <div>
-                                            <CardTitle>{data.name}</CardTitle>
-                                            <CardDescription>{data.category}</CardDescription>
+                                            <CardTitle>{doctor?.user?.firstName + doctor?.user?.lastName || ""}</CardTitle>
+                                            <CardDescription>{doctor?.specialization}</CardDescription>
                                         </div>
                                     </CardHeader>
                                     <CardContent>
@@ -46,32 +49,32 @@ export default function Doctors() {
                                                 <HomeIcon />
                                                 <h1 className="font-semibold">Gender</h1>
                                             </div>
-                                            <h1>{data.gender}</h1>
+                                            <h1>{doctor.gender}</h1>
                                         </div>
                                         <div className="flex justify-between my-2">
                                             <div className="flex gap-2 items-center">
                                                 <PlusCircledIcon />
                                                 <h1 className="font-semibold">Hospital</h1>
                                             </div>
-                                            <h1>{data.hospital}</h1>
+                                            <h1>{doctor.hospital}</h1>
                                         </div>
                                         <div className="flex justify-between my-2">
                                             <div className="flex gap-2 items-center">
                                                 <ClockIcon />
                                                 <h1 className="font-semibold">appointment Time</h1>
                                             </div>
-                                            <h1>{data.appointmentTime}</h1>
+                                            <h1>{doctor.appointmentTime}</h1>
                                         </div>
                                         <div className="flex justify-between my-2">
                                             <div className="flex gap-2 items-center">
                                                 <MagicWandIcon />
                                                 <h1 className="font-semibold">Fees</h1>
                                             </div>
-                                            <h1>{data.fees}</h1>
+                                            <h1>{doctor.fees}</h1>
                                         </div>
                                     </CardContent>
                                     <CardFooter>
-                                        <Link href={`/doctors/${data.id}`}>
+                                        <Link href={`/doctors/${doctor._id}`}>
                                             <Button>See Details</Button>
                                         </Link>
                                     </CardFooter>

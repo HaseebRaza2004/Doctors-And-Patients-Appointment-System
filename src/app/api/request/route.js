@@ -1,5 +1,6 @@
 import connectDB from "@/lib/connectDB";
 import { RequestModel } from "@/lib/models/requestModel";
+import { UserModal } from "@/lib/models/userModel";
 
 export async function POST(req) {
     await connectDB();
@@ -39,7 +40,14 @@ export async function POST(req) {
 
 export async function GET(req) {
     await connectDB();
-    const requests = await RequestModel.find().populate("user");
+    // console.log("req =>",req); 
+    const query = {};
+    const status = req?.nextUrl?.searchParams?.get("status");
+    if (status && status != "all") {
+        query.status = status;
+    };
+    // console.log("status in backend", status);
+    const requests = await RequestModel.find(query).populate("user");
     return Response.json(
         {
             error: false,
@@ -54,6 +62,8 @@ export async function PUT(req) {
     try {
         const obj = await req.json();
         let { id, status } = obj;
+        const request = await RequestModel.findOne({ _id: id });
+        await UserModal.findOneAndUpdate({ _id: request.user }, { role: "doctor" });
         const updated = await RequestModel.findOneAndUpdate(
             {
                 _id: id,
