@@ -1,4 +1,3 @@
-import { Type } from "lucide-react";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;

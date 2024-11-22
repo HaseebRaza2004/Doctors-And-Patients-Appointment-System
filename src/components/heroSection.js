@@ -3,11 +3,8 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { auth } from "../../auth";
 
-
 export default async function HeroSection() {
-
-    const session = await auth(); 
-
+    const session = await auth();
     return (
         <section className="text-gray-600 body-font">
             <div className="container mx-auto flex py-24 md:flex-row flex-col items-center">

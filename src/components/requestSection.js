@@ -33,7 +33,6 @@ export default function DoctorRequests({ requests, status }) {
             params.delete('status');
         };
         replace(`${pathname}?${params.toString()}`);
-        // console.log("params", params);
     }, [activeFilter]);
 
     const handleAction = (type, requestId) => {
@@ -43,10 +42,8 @@ export default function DoctorRequests({ requests, status }) {
 
     const confirmAction = async () => {
         if (selectedAction.type === "accept") {
-            // console.log("selectedAction=>", selectedAction);
             await updateRequest(selectedAction.requestId, "accepted");
         } else if (selectedAction.type === "reject") {
-            // console.log("selectedAction=>", selectedAction);
             await updateRequest(selectedAction.requestId, "rejected");
         }
         setDialogOpen(false);

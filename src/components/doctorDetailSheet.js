@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 
 export default function DoctorDetailSheet({ doctor }) {
-    // console.log("doctor",doctor);
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -115,4 +114,4 @@ export default function DoctorDetailSheet({ doctor }) {
       </SheetContent>
     </Sheet>
   );
-}
+};

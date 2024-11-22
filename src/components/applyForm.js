@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -52,11 +51,9 @@ export default function ApplyAsDoctorForm({ session }) {
     });
 
     async function onSubmit(values) {
-        // console.log(values);
         values.user = session.user._id;
         const response = await addRequest(values);
-        // console.log("response ", response);
-        
+
         if (response.error) {
             form.reset();
             toast({
@@ -221,4 +218,4 @@ export default function ApplyAsDoctorForm({ session }) {
             </form>
         </Form>
     );
-}
+};

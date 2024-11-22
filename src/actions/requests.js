@@ -12,10 +12,17 @@ export async function addRequest(data) {
     return add;
 };
 
-export async function getRequest(status) {    
+export async function getRequest(status) {
     let requests = await fetch(`${process.env.BASE_URL}api/request?status=${status ? status : ""}`);
     requests = requests.json();
     return requests;
+};
+
+export async function getSingleRequest(id) {
+    let request = await fetch(`${process.env.BASE_URL}api/request/${id}`);
+    request = request.json();
+
+    return request;
 };
 
 export async function updateRequest(id, status) {

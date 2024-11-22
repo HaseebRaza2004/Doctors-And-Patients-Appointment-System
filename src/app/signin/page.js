@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { auth, signIn } from "../../../auth";
 import { redirect } from "next/navigation";
 
-
 export default async function Signin() {
     const session = await auth();
     if(session) redirect("/");
