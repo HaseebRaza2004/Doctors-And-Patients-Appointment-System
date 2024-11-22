@@ -18,6 +18,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import DoctorDetailSheet from "./doctorDetailSheet";
+import Link from "next/link";
 
 export default function DoctorCard({ request, isAdmin, onAccept, onReject }) {
     return (

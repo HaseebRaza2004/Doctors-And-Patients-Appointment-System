@@ -1,18 +1,18 @@
-import {
-    HomeIcon,
-    ClockIcon,
-    PlusIcon,
-    GenderMaleIcon,
-    GraduationCapIcon,
-    StethoscopeIcon,
-    PhoneIcon,
-    MapPinIcon,
-} from "@radix-ui/react-icons";
 import { DatePicker } from "@/components/datePicker";
 import { auth } from "../../../../auth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getSingleRequest } from "@/actions/requests";
+import {
+    HomeIcon,
+    ClockIcon,
+    PlusIcon,
+    UserIcon as GenderMaleIcon,
+    GraduationCapIcon,
+    StethoscopeIcon,
+    PhoneIcon,
+    MapPinIcon,
+} from "lucide-react";
 
 export default async function DoctorDetail({ params }) {
     const session = await auth();
@@ -42,7 +42,7 @@ export default async function DoctorDetail({ params }) {
                             </p>
                         </div>
                     </CardHeader>
-                    <CardContent className="grid gap-6">  -
+                    <CardContent className="grid gap-6">
                         <div className="grid sm:grid-cols-2 gap-4">
                             <InfoItem
                                 icon={<GraduationCapIcon />}

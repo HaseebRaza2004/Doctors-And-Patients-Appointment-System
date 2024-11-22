@@ -21,7 +21,6 @@ export async function getRequest(status) {
 export async function getSingleRequest(id) {
     let request = await fetch(`${process.env.BASE_URL}api/request/${id}`);
     request = request.json();
-
     return request;
 };
 
