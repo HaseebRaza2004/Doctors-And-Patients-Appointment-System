@@ -21,7 +21,7 @@ export default function AppointmentFilterTabs({ status }) {
 
     return (
         <>
-            <div className="container grid w-full gap-4 md:w-1/2 mx-auto grid-cols-5">
+            <div className="container grid w-full gap-4 md:w-1/2 mx-auto grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5">
                 <div
                     className={`border-secondory cursor-pointer p-3 my-4 text-center border rounded ${activeFilter == "pending" && "bg-primary text-center text-white"
                         }`}

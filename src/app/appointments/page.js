@@ -26,7 +26,7 @@ export default async function Appointments({ searchParams }) {
 
             <AppointmentFilterTabs status={status} />
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
                 <div className="shadow flex-grow p-3 rounded border">
                     <h1 className="font font-bold text-2xl">Pending : {stats.pending}</h1>
                 </div>
