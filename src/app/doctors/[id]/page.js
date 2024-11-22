@@ -15,7 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getSingleRequest } from "@/actions/requests";
 
 export default async function DoctorDetail({ params }) {
-    const seesion = await auth();
+    const session = await auth();
     const { requests } = await getSingleRequest(params.id);
     const doctorInfo = requests;
 
@@ -42,7 +42,7 @@ export default async function DoctorDetail({ params }) {
                             </p>
                         </div>
                     </CardHeader>
-                    <CardContent className="grid gap-6">
+                    <CardContent className="grid gap-6">  -
                         <div className="grid sm:grid-cols-2 gap-4">
                             <InfoItem
                                 icon={<GraduationCapIcon />}
