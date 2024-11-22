@@ -41,7 +41,7 @@ export default async function Appointments({ searchParams }) {
                     </h1>
                 </div>
             </div>
-            <div className="my-10 grid grid-cols-3 gap-4">
+            <div className="my-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {appointments?.map((appointment) =>
                     isDoctor ? (
                         <DoctorAppointmentCard
